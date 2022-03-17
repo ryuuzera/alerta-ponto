@@ -17,6 +17,8 @@ type
   procedure ControlaSplitView(aSplitView: TSplitView);
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: Integer); overload;
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: TTabSheet); overload;
+  procedure AjustaFormSplitView(aForm: TForm; aSplitView: TSplitView);
+
 
 implementation
 
@@ -34,6 +36,16 @@ end;
 procedure ControlaSplitView(aSplitView: TSplitView);
 begin
   aSplitView.Opened := not aSplitView.Opened;
+end;
+
+procedure AjustaFormSplitView(aForm: TForm; aSplitView: TSplitView);
+const
+  FClientWidth = 631;
+begin
+  if aSplitView.Opened then
+    aForm.Width := FClientWidth - 100
+  else
+    aForm.Width := FClientWidth + 100;
 end;
 
 procedure NavegaMenus(aPageControl: TPageControl;
