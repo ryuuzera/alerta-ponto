@@ -1,2 +1,6 @@
 **/__history/
 **/__recovery/
+**/Project/Win32
+Project/Win32/
+*.exe
+*.dcu
