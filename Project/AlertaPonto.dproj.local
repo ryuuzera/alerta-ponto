@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/03/14 16:20:25.000.648,=C:\Users\Fagner\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 16:21:03.000.793,E:\Fagner\Git\alerta-ponto\AlertaPonto.Principal.View.dfm=C:\Users\Fagner\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/03/14 16:21:03.000.793,E:\Fagner\Git\alerta-ponto\AlertaPonto.Principal.View.pas=C:\Users\Fagner\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 16:21:11.000.138,E:\Fagner\Git\alerta-ponto\Project\Project1.dproj=C:\Users\Fagner\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/03/14 16:23:08.000.360,=E:\Fagner\Git\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 16:23:22.000.395,=E:\Fagner\Git\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 16:23:50.000.076,E:\Fagner\Git\alerta-ponto\Project\Controller\AlertaPornto.Alertas.Controller.pas=E:\Fagner\Git\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 16:31:08.000.364,E:\Fagner\Git\alerta-ponto\Project\Controller\AlertaPonto.Alertas.Controller.pas=E:\Fagner\Git\alerta-ponto\Project\Controller\AlertaPornto.Alertas.Controller.pas</Transaction>
+    <Transaction>2022/03/14 19:13:08.000.520,=D:\Projects\alerta-ponto\Project\Unit2.pas</Transaction>
+    <Transaction>2022/03/14 19:13:13.000.535,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 19:13:50.000.027,D:\Projects\alerta-ponto\Controller\AlertaPonto.Alertas.Controller.pas=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 19:36:08.000.574,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 19:36:39.000.443,D:\Projects\alerta-ponto\Model\AlertaPonto.Alertas.Model.pas=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 19:36:39.000.443,D:\Projects\alerta-ponto\Model\AlertaPonto.Alertas.Model.dfm=D:\Projects\alerta-ponto\Project\Unit1.dfm</Transaction>
+    <Transaction>2022/03/14 19:42:23.000.379,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/14 19:42:38.000.907,D:\Projects\alerta-ponto\Controller\AlertaPonto.Janelas.Controller.pas=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/16 18:09:11.000.834,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/16 21:06:54.153,D:\Projects\alerta-ponto\Project\AlertaPonto.dproj=D:\Projects\alerta-ponto\Project\Project1.dproj</Transaction>
+    <Transaction>2022/03/16 21:10:08.925,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/16 21:17:56.033,D:\Projects\alerta-ponto\Controller\AlertaPonto.Principal.Controller.pas=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

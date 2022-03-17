@@ -2,14 +2,16 @@ program Project1;
 
 uses
   Vcl.Forms,
-  AlertaPonto.Principal.View in '..\AlertaPonto.Principal.View.pas' {Form1},
-  AlertaPonto.Alertas.Controller in 'Controller\AlertaPonto.Alertas.Controller.pas';
+  AlertaPonto.Principal.View in '..\View\AlertaPonto.Principal.View.pas' {frmPrincipal},
+  AlertaPonto.Alertas.Controller in '..\Controller\AlertaPonto.Alertas.Controller.pas',
+  AlertaPonto.Alertas.Model in '..\Model\AlertaPonto.Alertas.Model.pas' {DataModule1: TDataModule},
+  AlertaPonto.Janelas.Controller in '..\Controller\AlertaPonto.Janelas.Controller.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.
