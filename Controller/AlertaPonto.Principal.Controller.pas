@@ -10,24 +10,17 @@ type
   TPrincipal = class
   private
   public
-    class procedure EscondeTabs(aPageControl: TPageControl);
-    class procedure ControlaSplitView(aSplitView: TSplitView);
-    class procedure NavegaMenus(aPageControl: TPageControl; aPagina: Integer); overload;
-    class procedure NavegaMenus(aPageControl: TPageControl; aPagina: TTabSheet); overload;
   published
   end;
 
+  procedure EscondeTabs(aPageControl: TPageControl);
+  procedure ControlaSplitView(aSplitView: TSplitView);
+  procedure NavegaMenus(aPageControl: TPageControl; aPagina: Integer); overload;
+  procedure NavegaMenus(aPageControl: TPageControl; aPagina: TTabSheet); overload;
+
 implementation
 
-
-{ TPrincipal }
-
-class procedure TPrincipal.ControlaSplitView(aSplitView: TSplitView);
-begin
-  aSplitView.Opened := not aSplitView.Opened;
-end;
-
-class procedure TPrincipal.EscondeTabs(aPageControl: TPageControl);
+procedure EscondeTabs(aPageControl: TPageControl);
 var
   i: Integer;
 begin
@@ -38,14 +31,18 @@ begin
   aPageControl.ActivePageIndex := 0;
 end;
 
+procedure ControlaSplitView(aSplitView: TSplitView);
+begin
+  aSplitView.Opened := not aSplitView.Opened;
+end;
 
-class procedure TPrincipal.NavegaMenus(aPageControl: TPageControl;
+procedure NavegaMenus(aPageControl: TPageControl;
   aPagina: TTabSheet);
 begin
   aPageControl.ActivePage := aPagina;
 end;
 
-class procedure TPrincipal.NavegaMenus(aPageControl: TPageControl;
+procedure NavegaMenus(aPageControl: TPageControl;
   aPagina: Integer);
 begin
   aPageControl.ActivePage := aPageControl.Pages[aPagina];

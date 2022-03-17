@@ -41,9 +41,6 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'pnFundo'
     ShowCaption = False
     TabOrder = 0
-    ExplicitLeft = 100
-    ExplicitWidth = 421
-    ExplicitHeight = 298
     object PageControl1: TPageControl
       Left = 0
       Top = 0
@@ -53,14 +50,8 @@ object frmPrincipal: TfrmPrincipal
       Align = alClient
       Style = tsFlatButtons
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 6
-      ExplicitWidth = 521
-      ExplicitHeight = 298
       object tsCriarAlerta: TTabSheet
         Caption = 'tsCriarAlerta'
-        ExplicitWidth = 413
-        ExplicitHeight = 267
         object Panel4: TPanel
           Left = 0
           Top = 0
@@ -77,8 +68,6 @@ object frmPrincipal: TfrmPrincipal
           ParentBackground = False
           ShowCaption = False
           TabOrder = 0
-          ExplicitWidth = 413
-          ExplicitHeight = 267
           object SplitView2: TSplitView
             Left = 0
             Top = 0
@@ -88,7 +77,6 @@ object frmPrincipal: TfrmPrincipal
             OpenedWidth = 100
             Placement = svpLeft
             TabOrder = 0
-            ExplicitLeft = 2
             object Panel7: TPanel
               Left = 0
               Top = 195
@@ -104,8 +92,6 @@ object frmPrincipal: TfrmPrincipal
               Font.Style = []
               ParentFont = False
               TabOrder = 0
-              ExplicitLeft = -2
-              ExplicitTop = 201
             end
             object Panel6: TPanel
               Left = 0
@@ -122,8 +108,6 @@ object frmPrincipal: TfrmPrincipal
               Font.Style = []
               ParentFont = False
               TabOrder = 1
-              ExplicitLeft = -2
-              ExplicitTop = 168
             end
             object Panel8: TPanel
               Left = 0
@@ -140,8 +124,6 @@ object frmPrincipal: TfrmPrincipal
               Font.Style = []
               ParentFont = False
               TabOrder = 2
-              ExplicitLeft = -2
-              ExplicitTop = 123
             end
             object Panel9: TPanel
               Left = 0
@@ -159,7 +141,6 @@ object frmPrincipal: TfrmPrincipal
               ParentFont = False
               TabOrder = 3
               OnClick = Panel9Click
-              ExplicitTop = 8
             end
             object Panel10: TPanel
               Left = 0
@@ -177,7 +158,6 @@ object frmPrincipal: TfrmPrincipal
               ParentFont = False
               TabOrder = 4
               OnClick = Panel10Click
-              ExplicitTop = 8
             end
             object Panel11: TPanel
               AlignWithMargins = True
@@ -200,7 +180,6 @@ object frmPrincipal: TfrmPrincipal
               ParentFont = False
               TabOrder = 5
               OnClick = Panel11Click
-              ExplicitTop = -5
             end
             object Panel13: TPanel
               Left = 0
@@ -219,8 +198,6 @@ object frmPrincipal: TfrmPrincipal
               ParentColor = True
               ParentFont = False
               TabOrder = 6
-              ExplicitLeft = -2
-              ExplicitTop = 234
             end
           end
           object Panel3: TPanel
@@ -232,10 +209,6 @@ object frmPrincipal: TfrmPrincipal
             BevelOuter = bvNone
             Caption = 'Panel3'
             TabOrder = 1
-            ExplicitLeft = 571
-            ExplicitTop = 183
-            ExplicitWidth = 185
-            ExplicitHeight = 41
             object PageControl2: TPageControl
               Left = 0
               Top = 0
@@ -246,8 +219,6 @@ object frmPrincipal: TfrmPrincipal
               TabOrder = 0
               object tsTodos: TTabSheet
                 Caption = 'tsTodos'
-                ExplicitLeft = 2
-                ExplicitTop = 21
                 object Label1: TLabel
                   Left = 32
                   Top = 79
@@ -352,6 +323,10 @@ object frmPrincipal: TfrmPrincipal
               object tsSegunda: TTabSheet
                 Caption = 'tsSegunda'
                 ImageIndex = 1
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object CheckBox1: TCheckBox
                   Left = 48
                   Top = 48
@@ -364,6 +339,10 @@ object frmPrincipal: TfrmPrincipal
               object tsTerca: TTabSheet
                 Caption = 'tsTerca'
                 ImageIndex = 2
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Memo1: TMemo
                   Left = 3
                   Top = 46
@@ -377,18 +356,34 @@ object frmPrincipal: TfrmPrincipal
               object tsQuarta: TTabSheet
                 Caption = 'tsQuarta'
                 ImageIndex = 3
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
               end
               object tsQuinta: TTabSheet
                 Caption = 'tsQuinta'
                 ImageIndex = 4
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
               end
               object tsSexta: TTabSheet
                 Caption = 'tsSexta'
                 ImageIndex = 5
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
               end
               object tsSabado: TTabSheet
                 Caption = 'tsSabado'
                 ImageIndex = 6
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
               end
             end
           end
@@ -401,7 +396,6 @@ object frmPrincipal: TfrmPrincipal
             BevelOuter = bvNone
             ShowCaption = False
             TabOrder = 2
-            ExplicitLeft = 558
             object Panel2: TPanel
               Left = 6
               Top = 21
@@ -444,7 +438,6 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'pnFundo'
       ShowCaption = False
       TabOrder = 0
-      ExplicitWidth = 100
       object Image1: TImage
         Left = -32
         Top = 0
@@ -468,6 +461,5 @@ object frmPrincipal: TfrmPrincipal
     ShowCaption = False
     TabOrder = 2
     OnMouseDown = Panel5MouseDown
-    ExplicitWidth = 521
   end
 end

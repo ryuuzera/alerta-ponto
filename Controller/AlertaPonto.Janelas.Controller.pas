@@ -10,14 +10,13 @@ type
   TJanelas = Class
   private
   public
-  class procedure Arrastar(aForm: TForm);
   end;
+
+  procedure Arrastar(aForm: TForm);
 
 implementation
 
-{ TJanelas }
-
-class procedure TJanelas.Arrastar(aForm: TForm);
+procedure Arrastar(aForm: TForm);
 const
   sc_DragMove = $F012;
 begin

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, AlertaPonto.Janelas.Controller,
-  Vcl.StdCtrls, Vcl.Mask;
+  Vcl.StdCtrls, Vcl.Mask, AlertaPonto.Principal.Controller;
 
 type
   TfrmPrincipal = class(TForm)
@@ -56,7 +56,7 @@ type
     procedure Panel10Click(Sender: TObject);
     procedure Panel9Click(Sender: TObject);
   private
-    procedure EscondeTabs;
+    procedure EscondeTabsView;
   public
   end;
 
@@ -67,44 +67,43 @@ implementation
 
 {$R *.dfm}
 
-uses AlertaPonto.Alertas.Controller, AlertaPonto.Principal.Controller;
+uses AlertaPonto.Alertas.Controller;
 
-
-procedure TfrmPrincipal.EscondeTabs;
+procedure TfrmPrincipal.EscondeTabsView;
 begin
-  TPrincipal.EscondeTabs(PageControl1);
-  TPrincipal.EscondeTabs(PageControl2);
+  EscondeTabs(PageControl1);
+  EscondeTabs(PageControl2);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  EscondeTabs;
+  EscondeTabsView;
 end;
 
 procedure TfrmPrincipal.Image1Click(Sender: TObject);
 begin
-  TPrincipal.ControlaSplitView(SplitView1);
+  ControlaSplitView(SplitView1);
 end;
 
 procedure TfrmPrincipal.Panel10Click(Sender: TObject);
 begin
-  TPrincipal.NavegaMenus(PageControl2, tsSegunda);
+  NavegaMenus(PageControl2, tsSegunda);
 end;
 
 procedure TfrmPrincipal.Panel11Click(Sender: TObject);
 begin
-  TPrincipal.NavegaMenus(PageControl2, tsTodos);
+  NavegaMenus(PageControl2, tsTodos);
 end;
 
 procedure TfrmPrincipal.Panel5MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  TJanelas.Arrastar(Self);
+  Arrastar(Self);
 end;
 
 procedure TfrmPrincipal.Panel9Click(Sender: TObject);
 begin
-  TPrincipal.NavegaMenus(PageControl2, tsTerca);
+  NavegaMenus(PageControl2, tsTerca);
 end;
 
 end.
