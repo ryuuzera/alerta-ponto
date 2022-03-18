@@ -173,13 +173,13 @@ var
     begin
       if LimpaMascara(AEdit.Text) = '' then
       begin
+        AEdit.SetFocus;
         raise Exception.Create('Preencha todos os horários!');
-        abort;
       end;
       if not ValidaHora(AEdit.Text) then
       begin
+        AEdit.SetFocus;
         raise Exception.Create('Horário Invalido!');
-        abort;
       end;
     end;
 

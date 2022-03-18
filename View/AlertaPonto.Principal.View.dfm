@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   BorderStyle = bsNone
   Caption = 'Super '
-  ClientHeight = 532
+  ClientHeight = 324
   ClientWidth = 570
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 570
-    Height = 532
+    Height = 324
     Align = alClient
     BevelOuter = bvNone
     Caption = 'Panel13'
@@ -29,12 +29,13 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     ParentDoubleBuffered = False
     TabOrder = 0
+    ExplicitHeight = 532
     object Panel11: TPanel
       AlignWithMargins = True
       Left = 1
       Top = 1
       Width = 568
-      Height = 530
+      Height = 322
       Margins.Left = 1
       Margins.Top = 1
       Margins.Right = 1
@@ -47,6 +48,7 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentDoubleBuffered = False
       TabOrder = 0
+      ExplicitHeight = 530
       object Panel5: TPanel
         Left = 0
         Top = 0
@@ -95,7 +97,7 @@ object frmPrincipal: TfrmPrincipal
         Left = 50
         Top = 24
         Width = 518
-        Height = 506
+        Height = 298
         Align = alClient
         BevelOuter = bvNone
         Caption = 'pnFundo'
@@ -105,27 +107,123 @@ object frmPrincipal: TfrmPrincipal
         ParentDoubleBuffered = False
         ShowCaption = False
         TabOrder = 1
+        ExplicitHeight = 506
         object PageControl1: TPageControl
           Left = 0
           Top = 0
           Width = 518
-          Height = 506
-          ActivePage = tsCriarAlerta
+          Height = 298
+          ActivePage = TabSheet1
           Align = alClient
           DoubleBuffered = True
           ParentDoubleBuffered = False
           Style = tsFlatButtons
           TabOrder = 0
+          object TabSheet1: TTabSheet
+            Caption = 'TabSheet1'
+            ImageIndex = 1
+            object DBGrid1: TDBGrid
+              Left = 50
+              Top = 48
+              Width = 399
+              Height = 137
+              BorderStyle = bsNone
+              DataSource = dmAlertas.dsAlertas
+              DrawingStyle = gdsClassic
+              FixedColor = 6307125
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 4467750
+              Font.Height = -12
+              Font.Name = 'Segoe UI Semibold'
+              Font.Style = []
+              Options = [dgTitles, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ParentFont = False
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+              OnDrawColumnCell = DBGrid1DrawColumnCell
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'Dia'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 4467750
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = []
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWhite
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI'
+                  Title.Font.Style = []
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Entrada'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 4467750
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = []
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWhite
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI Semibold'
+                  Title.Font.Style = []
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Almoco'
+                  Font.Charset = DEFAULT_CHARSET
+                  Font.Color = 4467750
+                  Font.Height = -12
+                  Font.Name = 'Segoe UI Semibold'
+                  Font.Style = []
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWhite
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI Semibold'
+                  Title.Font.Style = []
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Retorno'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWhite
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI Semibold'
+                  Title.Font.Style = []
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'Saida'
+                  Title.Font.Charset = DEFAULT_CHARSET
+                  Title.Font.Color = clWhite
+                  Title.Font.Height = -12
+                  Title.Font.Name = 'Segoe UI Semibold'
+                  Title.Font.Style = []
+                  Visible = True
+                end>
+            end
+          end
           object tsCriarAlerta: TTabSheet
             Caption = 'tsCriarAlerta'
+            ExplicitHeight = 475
             DesignSize = (
               510
-              475)
+              267)
             object Panel4: TPanel
               Left = 0
               Top = 0
               Width = 510
-              Height = 475
+              Height = 267
               Margins.Left = 0
               Margins.Top = 0
               Margins.Right = 0
@@ -137,40 +235,44 @@ object frmPrincipal: TfrmPrincipal
               ParentBackground = False
               ShowCaption = False
               TabOrder = 0
+              ExplicitHeight = 475
               object Panel3: TPanel
                 Left = 0
                 Top = 0
                 Width = 418
-                Height = 475
+                Height = 267
                 Align = alClient
                 BevelOuter = bvNone
                 Caption = 'Panel3'
                 Color = 14602181
                 ParentBackground = False
                 TabOrder = 0
+                ExplicitHeight = 475
                 object PageControl2: TPageControl
                   AlignWithMargins = True
                   Left = 5
                   Top = 8
                   Width = 413
-                  Height = 459
+                  Height = 251
                   Margins.Left = 5
                   Margins.Top = 8
                   Margins.Right = 0
                   Margins.Bottom = 8
-                  ActivePage = tsQuarta
+                  ActivePage = tsTodos
                   Align = alClient
                   DoubleBuffered = True
                   ParentDoubleBuffered = False
                   Style = tsButtons
                   TabOrder = 0
+                  ExplicitHeight = 459
                   object tsTodos: TTabSheet
                     Caption = 'tsTodos'
+                    ExplicitHeight = 428
                     object pnTsTodos: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'pnTsTodos'
@@ -180,9 +282,10 @@ object frmPrincipal: TfrmPrincipal
                       ParentDoubleBuffered = False
                       ShowCaption = False
                       TabOrder = 0
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape1: TShape
                         Left = 77
                         Top = 28
@@ -349,26 +452,13 @@ object frmPrincipal: TfrmPrincipal
                         ParentFont = False
                         TabOrder = 7
                       end
-                      object DBGrid1: TDBGrid
-                        Left = 83
-                        Top = 240
-                        Width = 320
-                        Height = 169
-                        DataSource = dmAlertas.dsAlertas
-                        TabOrder = 8
-                        TitleFont.Charset = DEFAULT_CHARSET
-                        TitleFont.Color = clWindowText
-                        TitleFont.Height = -11
-                        TitleFont.Name = 'Tahoma'
-                        TitleFont.Style = []
-                      end
                       object btTDEntrada: TBitBtn
                         Tag = 10
                         Left = 187
                         Top = 80
                         Width = 26
                         Height = 26
-                        TabOrder = 9
+                        TabOrder = 8
                       end
                       object btTDRetorno: TBitBtn
                         Tag = 10
@@ -376,7 +466,7 @@ object frmPrincipal: TfrmPrincipal
                         Top = 158
                         Width = 26
                         Height = 26
-                        TabOrder = 10
+                        TabOrder = 9
                       end
                       object btTDSaida: TBitBtn
                         Tag = 10
@@ -384,7 +474,7 @@ object frmPrincipal: TfrmPrincipal
                         Top = 158
                         Width = 26
                         Height = 26
-                        TabOrder = 11
+                        TabOrder = 10
                       end
                       object btTDAlmoco: TBitBtn
                         Tag = 10
@@ -392,18 +482,19 @@ object frmPrincipal: TfrmPrincipal
                         Top = 80
                         Width = 26
                         Height = 26
-                        TabOrder = 12
+                        TabOrder = 11
                       end
                     end
                   end
                   object tsSegunda: TTabSheet
                     Caption = 'tsSegunda'
                     ImageIndex = 1
+                    ExplicitHeight = 428
                     object Panel28: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'Panel6'
@@ -411,9 +502,10 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape5: TShape
                         Left = 77
                         Top = 28
@@ -617,11 +709,12 @@ object frmPrincipal: TfrmPrincipal
                   object tsTerca: TTabSheet
                     Caption = 'tsTerca'
                     ImageIndex = 2
+                    ExplicitHeight = 428
                     object Panel38: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'Panel6'
@@ -629,9 +722,10 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape7: TShape
                         Left = 77
                         Top = 28
@@ -835,11 +929,12 @@ object frmPrincipal: TfrmPrincipal
                   object tsQuarta: TTabSheet
                     Caption = 'tsQuarta'
                     ImageIndex = 3
+                    ExplicitHeight = 428
                     object Panel2: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'Panel6'
@@ -848,9 +943,10 @@ object frmPrincipal: TfrmPrincipal
                       ShowCaption = False
                       TabOrder = 0
                       ExplicitLeft = -2
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape2: TShape
                         Left = 77
                         Top = 28
@@ -1055,11 +1151,12 @@ object frmPrincipal: TfrmPrincipal
                   object tsQuinta: TTabSheet
                     Caption = 'tsQuinta'
                     ImageIndex = 4
+                    ExplicitHeight = 428
                     object Panel18: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'Panel6'
@@ -1067,9 +1164,10 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape3: TShape
                         Left = 77
                         Top = 28
@@ -1273,11 +1371,12 @@ object frmPrincipal: TfrmPrincipal
                   object tsSexta: TTabSheet
                     Caption = 'tsSexta'
                     ImageIndex = 5
+                    ExplicitHeight = 428
                     object Panel33: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'Panel6'
@@ -1285,9 +1384,10 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape6: TShape
                         Left = 77
                         Top = 28
@@ -1491,11 +1591,12 @@ object frmPrincipal: TfrmPrincipal
                   object tsSabado: TTabSheet
                     Caption = 'tsSabado'
                     ImageIndex = 6
+                    ExplicitHeight = 428
                     object Panel23: TPanel
                       Left = 0
                       Top = 0
                       Width = 405
-                      Height = 428
+                      Height = 220
                       Align = alClient
                       BevelOuter = bvNone
                       Caption = 'Panel6'
@@ -1505,9 +1606,10 @@ object frmPrincipal: TfrmPrincipal
                       TabOrder = 0
                       ExplicitLeft = 1
                       ExplicitTop = -9
+                      ExplicitHeight = 428
                       DesignSize = (
                         405
-                        428)
+                        220)
                       object Shape4: TShape
                         Left = 77
                         Top = 28
@@ -1714,12 +1816,13 @@ object frmPrincipal: TfrmPrincipal
                 Left = 418
                 Top = 0
                 Width = 92
-                Height = 475
+                Height = 267
                 Align = alRight
                 Anchors = [akLeft, akTop, akRight, akBottom]
                 BevelOuter = bvNone
                 ShowCaption = False
                 TabOrder = 1
+                ExplicitHeight = 475
                 object pnGravar: TPanel
                   Tag = 10
                   AlignWithMargins = True
@@ -1750,10 +1853,13 @@ object frmPrincipal: TfrmPrincipal
             object SplitView2: TSplitView
               Left = 0
               Top = 0
-              Width = 70
-              Height = 475
+              Width = 0
+              Height = 267
+              AnimationDelay = 25
+              AnimationStep = 15
               Color = 12615680
               DisplayMode = svmOverlay
+              Opened = False
               OpenedWidth = 70
               Placement = svpLeft
               TabOrder = 1
@@ -1761,7 +1867,7 @@ object frmPrincipal: TfrmPrincipal
                 Tag = 10
                 Left = 0
                 Top = 190
-                Width = 70
+                Width = 0
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
@@ -1776,12 +1882,13 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 0
                 OnClick = pnSextaClick
+                ExplicitWidth = 70
               end
               object pnQuinta: TPanel
                 Tag = 10
                 Left = 0
                 Top = 157
-                Width = 70
+                Width = 0
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
@@ -1796,12 +1903,13 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 1
                 OnClick = pnQuintaClick
+                ExplicitWidth = 70
               end
               object pnQuarta: TPanel
                 Tag = 10
                 Left = 0
                 Top = 124
-                Width = 70
+                Width = 0
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
@@ -1816,12 +1924,13 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 2
                 OnClick = pnQuartaClick
+                ExplicitWidth = 70
               end
               object pnTerca: TPanel
                 Tag = 10
                 Left = 0
                 Top = 91
-                Width = 70
+                Width = 0
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
@@ -1836,12 +1945,13 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 3
                 OnClick = pnTercaClick
+                ExplicitWidth = 70
               end
               object pnSegunda: TPanel
                 Tag = 10
                 Left = 0
                 Top = 58
-                Width = 70
+                Width = 0
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
@@ -1856,13 +1966,14 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 4
                 OnClick = pnSegundaClick
+                ExplicitWidth = 70
               end
               object pnTodosDias: TPanel
                 Tag = 10
                 AlignWithMargins = True
                 Left = 0
                 Top = 25
-                Width = 70
+                Width = 0
                 Height = 33
                 Margins.Left = 0
                 Margins.Top = 25
@@ -1881,12 +1992,13 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 5
                 OnClick = pnTodosDiasClick
+                ExplicitWidth = 70
               end
               object pnSabado: TPanel
                 Tag = 10
                 Left = 0
                 Top = 223
-                Width = 70
+                Width = 0
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
@@ -1901,6 +2013,7 @@ object frmPrincipal: TfrmPrincipal
                 ParentFont = False
                 TabOrder = 6
                 OnClick = pnSabadoClick
+                ExplicitWidth = 70
               end
             end
           end
@@ -1910,17 +2023,18 @@ object frmPrincipal: TfrmPrincipal
         Left = 0
         Top = 24
         Width = 50
-        Height = 506
+        Height = 298
         Color = 9001994
         OpenedWidth = 50
         Placement = svpLeft
         TabOrder = 2
+        ExplicitHeight = 506
         object Panel1: TPanel
           AlignWithMargins = True
           Left = 0
           Top = 0
           Width = 48
-          Height = 506
+          Height = 298
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 2
@@ -1932,6 +2046,16 @@ object frmPrincipal: TfrmPrincipal
           ParentBackground = False
           ShowCaption = False
           TabOrder = 0
+          ExplicitHeight = 506
+          object Button1: TButton
+            Left = 0
+            Top = 27
+            Width = 75
+            Height = 25
+            Caption = 'Button1'
+            TabOrder = 0
+            OnClick = Button1Click
+          end
         end
       end
     end
@@ -1943,6 +2067,8 @@ object frmPrincipal: TfrmPrincipal
     Width = 62
     Height = 18
     Caption = 'pnEvents'
+    Color = 13679790
+    ParentBackground = False
     TabOrder = 1
     Visible = False
     OnClick = pnEventsClick

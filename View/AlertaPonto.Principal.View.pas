@@ -113,7 +113,6 @@ type
     Panel41: TPanel;
     Panel42: TPanel;
     pnEvents: TPanel;
-    DBGrid1: TDBGrid;
     btSXEntrada: TBitBtn;
     btSXRetorno: TBitBtn;
     btSXAlmoco: TBitBtn;
@@ -149,6 +148,9 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    TabSheet1: TTabSheet;
+    Button1: TButton;
+    DBGrid1: TDBGrid;
     procedure Panel5MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
@@ -165,6 +167,9 @@ type
     procedure pnEventsMouseLeave(Sender: TObject);
     procedure pnGravarClick(Sender: TObject);
     procedure pnEventsClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     procedure EscondeTabsView;
   public
@@ -181,6 +186,35 @@ uses AlertaPonto.Alertas.Controller, AlertaPonto.Alertas.Model,
   AlertaPonto.Mensagens.Controller, AlertaPonto.Funcs.Controller,
   AlertaPonto.TimePicker.View;
 
+
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+begin
+  if PageControl1.ActivePage <> tsCriarAlerta then
+  begin
+    PageControl1.ActivePage := tsCriarAlerta;
+    SplitView2.Open;
+  end
+  else
+  begin
+    SplitView2.Close;
+    PageControl1.ActivePage := TabSheet1;
+  end;
+end;
+
+procedure TfrmPrincipal.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if Odd(DBGrid1.DataSource.DataSet.RecNo) then
+    DBGrid1.Canvas.Brush.Color := $00D0BCAE
+  else
+    DBGrid1.Canvas.Brush.Color := clWhite;
+
+  if (gdSelected in State) then
+  begin
+    DBGrid1.Canvas.Brush.Color := $00C07D0E;
+    DBGrid1.Canvas.Font.Color  := ClWhite;
+  end;
+end;
 
 procedure TfrmPrincipal.EscondeTabsView;
 begin
