@@ -3,12 +3,14 @@ unit AlertaPonto.Alertas.Model;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, Datasnap.DBClient;
+  System.SysUtils, System.Classes, Data.DB, Datasnap.DBClient, Datasnap.Provider;
 
 type
-  TDataModule1 = class(TDataModule)
+  TdmAlertas = class(TDataModule)
     cdsAlertas: TClientDataSet;
     dsAlertas: TDataSource;
+    dsProvider: TDataSetProvider;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -16,12 +18,20 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  dmAlertas: TdmAlertas;
 
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses AlertaPonto.Alertas.Controller;
+
 {$R *.dfm}
+
+procedure TdmAlertas.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  CriaCamposDataSet(cdsAlertas);
+end;
 
 end.

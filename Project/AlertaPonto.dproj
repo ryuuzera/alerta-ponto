@@ -98,12 +98,22 @@
         </DCCReference>
         <DCCReference Include="..\Controller\AlertaPonto.Alertas.Controller.pas"/>
         <DCCReference Include="..\Model\AlertaPonto.Alertas.Model.pas">
-            <Form>DataModule1</Form>
+            <Form>dmAlertas</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\Controller\AlertaPonto.Janelas.Controller.pas"/>
         <DCCReference Include="..\Controller\AlertaPonto.Principal.Controller.pas"/>
+        <DCCReference Include="..\Controller\AlertaPonto.Mensagens.Controller.pas"/>
+        <DCCReference Include="..\Controller\AlertaPonto.Funcs.Controller.pas"/>
+        <DCCReference Include="..\View\Forms_Owner\AlertaPonto.FormDlgPadrao.View.pas">
+            <Form>frmDlgPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\View\AlertaPonto.TimePicker.View.pas">
+            <Form>frmTimePicker</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
