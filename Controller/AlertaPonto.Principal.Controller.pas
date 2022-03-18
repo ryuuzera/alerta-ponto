@@ -39,6 +39,7 @@ begin
     GetHorario(TMaskEdit(Component));
   end;
 end;
+
 procedure GetHorario(aEdit: TMaskEdit);
 begin
   frmTimePicker := TfrmTimePicker.Create;
@@ -120,6 +121,7 @@ begin
       aDataSet.FieldByName('Saida').AsDateTime := StrToTime(sSaida);
       aDataSet.FieldByName('Retorno').AsDateTime := StrToTime(sRetorno);
     end;
+    aDataSet.Next;
   end;
   Mensagem('Horários Gravados Com Sucesso!', mtInformation, [mbOK]);
 end;

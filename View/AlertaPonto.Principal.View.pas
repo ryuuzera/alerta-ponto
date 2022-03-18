@@ -172,6 +172,7 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     procedure EscondeTabsView;
+    procedure Gravar;
   public
   end;
 
@@ -231,6 +232,36 @@ begin
   AtribuiEventosClick(Self);
 end;
 
+procedure TfrmPrincipal.Gravar;
+const
+  MsgDefault = 'Deseja Gravar esses horários para ';
+
+    procedure EfetuaGravacao(Msg: String ; aDia: Integer; aPageControl: TPageControl; aTab: TTabSheet;
+      aED1, aED2, aED3, aED4: TMaskEdit; Todos: Boolean);
+    begin
+      if aPageControl.ActivePage = aTab then
+      begin
+        if (Todos = True) then
+        begin
+          if (Mensagem(msgDefault+Msg, mtInformation, [mbyes, mbNo], 0)=mryes) then
+            GravaHorariosTodos(dmAlertas.cdsAlertas, aED1.Text, aED2.Text, aED3.Text, aED4.Text)
+        end
+        else
+          if (Mensagem(msgDefault+Msg, mtInformation, [mbyes, mbNo], 0)=mryes) then
+            GravaHorario(aDia, dmAlertas.cdsAlertas, aED1.Text, aED2.Text, aED3.Text, aED4.Text);
+      end;
+    end;
+
+begin
+  EfetuaGravacao('TODOS os dias?', 0, PageControl2, tsTodos, edTDEntrada, edTDAlmoco, edTDRetorno, edTDSaida, True);
+  EfetuaGravacao('toda Segunda-Feira?', 1, PageControl2, tsSegunda, edSGEntrada, edSGAlmoco, edSGRetorno,edSGSaida, False);
+  EfetuaGravacao('toda Terça-Feira?', 2, PageControl2, tsTerca, edTCEntrada, edTCAlmoco, edTCRetorno, edTCSaida, False);
+  EfetuaGravacao('toda Quarta-Feira?', 3, PageControl2, tsQuarta, edQTEntrada, edQTAlmoco, edQTRetorno, edQTSaida, False);
+  EfetuaGravacao('toda Quinta-Feira?', 4, PageControl2, tsQuinta, edQNEntrada, edQNAlmoco, edQNRetorno, edQNSaida, False);
+  EfetuaGravacao('toda Sexta-Feira?', 5, PageControl2, tsSexta, edSXEntrada, edSXAlmoco, edSXRetorno, edSXSaida, False);
+  EfetuaGravacao('todo Sábado?', 6, PageControl2, tsSabado, edSBEntrada, edSBAlmoco, edSBRetorno, edSBSaida, False);
+end;
+
 procedure TfrmPrincipal.imgMenuClick(Sender: TObject);
 begin
   ControlaSplitView(SplitView1);
@@ -284,24 +315,10 @@ begin
 end;
 
 procedure TfrmPrincipal.pnGravarClick(Sender: TObject);
-const
-  MsgTodos = 'Deseja Gravar esses horários para TODOS os dias?';
-  MsgDefault = 'Deseja Gravar esses horários para ';
 begin
   ValidaCamposVazios(Self, PageControl2.ActivePage);
-  if PageControl2.ActivePage = tsTodos then
-  begin
-    if (Mensagem(msgTodos, mtInformation, [mbyes, mbNo], 0)=mryes) then
-      GravaHorariosTodos(dmAlertas.cdsAlertas, edTDEntrada.Text, edTDAlmoco.Text, edTDRetorno.Text, edTDSaida.Text);
-  end;
-  if PageControl2.ActivePage = tsSegunda then
-  begin
-    if (Mensagem(msgDefault+'toda Segunda-Feira?', mtInformation, [mbyes, mbNo], 0)=mryes) then
-      GravaHorario(1, dmAlertas.cdsAlertas, edSGEntrada.Text, edSGAlmoco.Text, edSGRetorno.Text, edSGSaida.Text);
-  end;
+  Gravar;
 end;
-
-
 
 procedure TfrmPrincipal.pnQuartaClick(Sender: TObject);
 begin
