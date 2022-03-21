@@ -4,18 +4,19 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
 
 type
   TfrmDlgPadrao = class(TForm)
     Panel5: TPanel;
-    imgFechar: TImage;
     imgMinimizar: TImage;
     imgMenu: TImage;
     Panel12: TPanel;
     Panel1: TPanel;
     Panel2: TPanel;
+    imgFechar: TImage;
     procedure FormCreate(Sender: TObject);
+    procedure imgFecharClick(Sender: TObject);
   private
     { Private declarations }
     Timer: TTimer;
@@ -47,6 +48,11 @@ procedure TfrmDlgPadrao.FormCreate(Sender: TObject);
 begin
   Timer := TTimer.Create(nil);
   FadeIn;
+end;
+
+procedure TfrmDlgPadrao.imgFecharClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmDlgPadrao.OnTimer(Sender: TObject);

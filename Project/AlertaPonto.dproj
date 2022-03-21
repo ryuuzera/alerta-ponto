@@ -114,6 +114,35 @@
             <Form>frmTimePicker</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Model\AlertaPonto.Principal.Model.pas">
+            <Form>dmPrincipal</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <RcItem Include="..\assets\icons\alarme.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>alarme</ResourceId>
+        </RcItem>
+        <RcItem Include="..\assets\icons\alarme-azul.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>alarme_hover</ResourceId>
+        </RcItem>
+        <RcItem Include="..\assets\icons\calendar.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>calendar</ResourceId>
+        </RcItem>
+        <RcItem Include="..\assets\icons\calendar-azul.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>calendar_hover</ResourceId>
+        </RcItem>
+        <RcItem Include="..\assets\icons\home.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>home</ResourceId>
+        </RcItem>
+        <RcItem Include="..\assets\icons\home-azul.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>home_hover</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -140,9 +169,45 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="..\assets\icons\home.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\assets\icons\calendar-azul.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\assets\icons\alarme.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\assets\icons\home-azul.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\assets\icons\alarme-azul.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\AlertaPonto.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>AlertaPonto.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\assets\icons\calendar.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

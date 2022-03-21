@@ -26,13 +26,31 @@
     <Transaction>2022/03/18 00:12:41.000.000,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
     <Transaction>2022/03/18 00:12:58.000.791,D:\Projects\alerta-ponto\Controller\AlertaPonto.Funcs.Controller.pas=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
     <Transaction>2022/03/18 00:44:17.000.138,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
-    <Transaction>2022/03/18 00:49:46.000.910,D:\Projects\alerta-ponto\Project\Unit1.dfm=D:\Projects\alerta-ponto\View\Forms_Owner\AlertaPonto.FormDlgPadrao.View.dfm</Transaction>
     <Transaction>2022/03/18 00:49:46.000.910,D:\Projects\alerta-ponto\Project\Unit1.pas=D:\Projects\alerta-ponto\View\Forms_Owner\AlertaPonto.FormDlgPadrao.View.pas</Transaction>
+    <Transaction>2022/03/18 00:49:46.000.910,D:\Projects\alerta-ponto\Project\Unit1.dfm=D:\Projects\alerta-ponto\View\Forms_Owner\AlertaPonto.FormDlgPadrao.View.dfm</Transaction>
     <Transaction>2022/03/18 00:50:08.000.061,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
     <Transaction>2022/03/18 00:52:20.000.501,D:\Projects\alerta-ponto\Project\Unit1.pas=D:\Projects\alerta-ponto\View\AlertaPonto.TimePicker.View.pas</Transaction>
     <Transaction>2022/03/18 00:52:20.000.501,D:\Projects\alerta-ponto\Project\Unit1.dfm=D:\Projects\alerta-ponto\View\AlertaPonto.TimePicker.View.dfm</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <Transaction>2022/03/20 15:29:29.000.214,=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/20 15:29:43.000.630,D:\Projects\alerta-ponto\Model\AlertaPonto.Principal.Model.dfm=D:\Projects\alerta-ponto\Project\Unit1.dfm</Transaction>
+    <Transaction>2022/03/20 15:29:43.000.630,D:\Projects\alerta-ponto\Model\AlertaPonto.Principal.Model.pas=D:\Projects\alerta-ponto\Project\Unit1.pas</Transaction>
+    <Transaction>2022/03/20 23:17:46.050,=D:\Projects\alerta-ponto\assets\icons\alarme.png</Transaction>
+    <Transaction>2022/03/20 23:17:46.056,=D:\Projects\alerta-ponto\assets\icons\alarme-azul.png</Transaction>
+    <Transaction>2022/03/20 23:17:46.063,=D:\Projects\alerta-ponto\assets\icons\calendar.png</Transaction>
+    <Transaction>2022/03/20 23:17:46.071,=D:\Projects\alerta-ponto\assets\icons\calendar-azul.png</Transaction>
+    <Transaction>2022/03/20 23:17:46.081,=D:\Projects\alerta-ponto\assets\icons\home.png</Transaction>
+    <Transaction>2022/03/20 23:17:46.091,=D:\Projects\alerta-ponto\assets\icons\home-azul.png</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="..\..\alerta-ponto"/>
+    <File Path="..\assets"/>
+    <File Path="..\assets\icons"/>
+    <File Path="..\assets\icons\alarme.png"/>
+    <File Path="..\assets\icons\alarme-azul.png"/>
+    <File Path="..\assets\icons\calendar.png"/>
+    <File Path="..\assets\icons\calendar-azul.png"/>
+    <File Path="..\assets\icons\home.png"/>
+    <File Path="..\assets\icons\home-azul.png"/>
     <File Path="..\Controller"/>
     <File Path="..\Controller\AlertaPonto.Alertas.Controller.pas"/>
     <File Path="..\Controller\AlertaPonto.Funcs.Controller.pas"/>
@@ -42,6 +60,8 @@
     <File Path="..\Model"/>
     <File Path="..\Model\AlertaPonto.Alertas.Model.pas"/>
     <File Path="..\Model\AlertaPonto.Alertas.Model.dfm"/>
+    <File Path="..\Model\AlertaPonto.Principal.Model.pas"/>
+    <File Path="..\Model\AlertaPonto.Principal.Model.dfm"/>
     <File Path="..\View"/>
     <File Path="..\View\Forms_Owner"/>
     <File Path="..\View\Forms_Owner\AlertaPonto.FormDlgPadrao.View.pas"/>

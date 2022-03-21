@@ -18,15 +18,18 @@ type
   procedure MouseHoverColor(aPanel: TPanel);
   procedure MouseLeaveColor(aPanel: TPanel);
   procedure MascaraHoraEdits(aForm: TForm);
+  procedure MouseHoverIcon(aImg: TImage);
+  procedure MouseLeaveIcon(aImg: TImage);
 
   const
     COR_BOTAO = $00C08000;
     COR_BOTAO_HOVER = $00AF6E00;
+    Menu: TArray<String> = ['Home','Alertas','Grid'];
 
 implementation
 
 uses
-  Vcl.Mask;
+  Vcl.Mask, AlertaPonto.Principal.Model;
 
 procedure Arrastar(aForm: TForm);
 const
@@ -51,7 +54,9 @@ begin
     begin
       TPanel(aForm.Components[i]).Cursor := crHandPoint;
     end;
-    if (aForm.Components[i].ClassName = 'TImage') and (aForm.Components[i].Tag = 10) then
+    if (aForm.Components[i].ClassName = 'TImage') and ((aForm.Components[i].Tag = 10) or (aForm.Components[i].Tag = 11))  then
+      TImage(aForm.Components[i]).Cursor := crHandPoint;
+    if (aForm.Components[i].ClassName = 'TBitBtn') and (aForm.Components[i].Tag = 10) then
       TImage(aForm.Components[i]).Cursor := crHandPoint;
   end;
 end;
@@ -83,4 +88,56 @@ begin
   end;
 
 end;
+
+procedure MouseHoverIcon(aImg: TImage);
+var
+  Img: TResourceStream;
+begin
+  try
+    if Pos(Menu[0], aImg.Name) > 0 then
+    begin
+      Img := TResourceStream.Create(HInstance, 'home_hover', RT_RCDATA);
+      aImg.Picture.LoadFromStream(Img);
+    end;
+    if Pos(Menu[1], aImg.Name) > 0 then
+     begin
+      Img := TResourceStream.Create(HInstance, 'alarme_hover', RT_RCDATA);
+      aImg.Picture.LoadFromStream(Img);
+    end;
+    if Pos(Menu[2], aImg.Name) > 0 then
+     begin
+      Img := TResourceStream.Create(HInstance, 'calendar_hover', RT_RCDATA);
+      aImg.Picture.LoadFromStream(Img);
+    end;
+  finally
+    Img.Free;
+  end;
+end;
+
+procedure MouseLeaveIcon(aImg: TImage);
+var
+  Img: TResourceStream;
+begin
+  try
+    if Pos(Menu[0], aImg.Name) > 0 then
+    begin
+      Img := TResourceStream.Create(HInstance, 'home', RT_RCDATA);
+      aImg.Picture.LoadFromStream(Img);
+    end;
+    if Pos(Menu[1], aImg.Name) > 0 then
+     begin
+      Img := TResourceStream.Create(HInstance, 'alarme', RT_RCDATA);
+      aImg.Picture.LoadFromStream(Img);
+    end;
+    if Pos(Menu[2], aImg.Name) > 0 then
+     begin
+      Img := TResourceStream.Create(HInstance, 'calendar', RT_RCDATA);
+      aImg.Picture.LoadFromStream(Img);
+    end;
+  finally
+    Img.Free;
+  end;
+end;
+
+
 end.

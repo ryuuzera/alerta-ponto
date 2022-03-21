@@ -1,0 +1,6 @@
+alarme RCDATA "..\\assets\\icons\\alarme.png"
+alarme_hover RCDATA "..\\assets\\icons\\alarme-azul.png"
+calendar RCDATA "..\\assets\\icons\\calendar.png"
+calendar_hover RCDATA "..\\assets\\icons\\calendar-azul.png"
+home RCDATA "..\\assets\\icons\\home.png"
+home_hover RCDATA "..\\assets\\icons\\home-azul.png"

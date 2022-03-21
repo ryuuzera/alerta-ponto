@@ -5,22 +5,10 @@ inherited frmTimePicker: TfrmTimePicker
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel2: TPanel
-    ExplicitLeft = 0
-    ExplicitTop = 0
-    ExplicitWidth = 359
-    ExplicitHeight = 208
     inherited Panel12: TPanel
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 357
-      ExplicitHeight = 206
       inherited Panel1: TPanel
         Color = 14602181
         ParentBackground = False
-        ExplicitLeft = 2
-        ExplicitTop = 28
-        ExplicitWidth = 355
-        ExplicitHeight = 180
         object Label1: TLabel
           Left = 96
           Top = 26
@@ -61,6 +49,7 @@ inherited frmTimePicker: TfrmTimePicker
           Font.Height = -16
           Font.Name = 'Segoe UI'
           Font.Style = []
+          ShowOkCancel = False
           TabOrder = 0
           Time = 44638.035052754630000000
           TimeFormat = 'hh:mm'
@@ -91,16 +80,11 @@ inherited frmTimePicker: TfrmTimePicker
         end
       end
       inherited Panel5: TPanel
-        OnMouseDown = nil
-        ExplicitWidth = 357
-        inherited imgFechar: TImage
-          OnClick = nil
-        end
         inherited imgMinimizar: TImage
-          OnClick = nil
+          Visible = False
         end
         inherited imgMenu: TImage
-          OnClick = nil
+          Visible = False
         end
       end
     end

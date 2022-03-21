@@ -5,12 +5,19 @@ interface
 uses
   Classes, Windows, Messages, SysUtils, Graphics,
   Controls, Forms,Dialogs, ComCtrls, WinXCtrls,ExtCtrls, Data.DB, Datasnap.DBClient,
-  Vcl.Mask;
+  Vcl.Mask, Vcl.DBGrids, Vcl.StdCtrls;
 
   procedure EscondeTabs(aPageControl: TPageControl);
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: Integer); overload;
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: TTabSheet); overload;
   procedure AtribuiEventosMouse(aForm: TForm);
+  /// <summary>
+  // Tag 25 padrão para TPanel que armazena os eventos do mouse.
+  // Tag 10 padrão para TPanel que será botão.
+  // Procedimento Verifica Todos os Paineis que serão tratados
+  // como botão e atribui dinamicamente o efeito de troca de cor
+  // ao passar o mouse por ele.
+  /// </summary>
   procedure AtribuiEventosClick(aForm: TForm);
   procedure GravaHorariosTodos(aDataSet: TClientDataSet; sEntrada, sAlmoco, sSaida, sRetorno: String);
   procedure GravaHorario(aDia: Integer;aDataSet: TClientDataSet; sEntrada, sAlmoco, sSaida, sRetorno: String);
@@ -18,12 +25,32 @@ uses
   procedure GetHorario(aEdit: TMaskEdit);
   procedure OnClickBitBtn(aForm: TForm;Sender: TObject);
   procedure ControlaSplitView(aSplitView: TSplitView);
+  procedure ConfiguraIconesBt(aForm: TForm);
+  procedure ControlaNavegacao(Sender: TObject);
 
 implementation
 
 uses AlertaPonto.Principal.View, AlertaPonto.Alertas.Controller,
   AlertaPonto.Alertas.Model, AlertaPonto.Mensagens.Controller,
-  AlertaPonto.Funcs.Controller, Vcl.Buttons, AlertaPonto.TimePicker.View;
+  AlertaPonto.Funcs.Controller, Vcl.Buttons, AlertaPonto.TimePicker.View,
+  AlertaPonto.Principal.Model;
+
+procedure ControlaNavegacao(Sender: TObject);
+begin
+  frmPrincipal.Navbar.Top := TImage(Sender).Top;
+  frmPrincipal.Panel1.Repaint;
+end;
+
+procedure ConfiguraIconesBt(aForm: TForm);
+var
+  i:integer;
+begin
+  for i := 0 to Pred(aForm.ComponentCount) do
+  begin
+    if (aForm.Components[i].ClassName = 'TBitBtn') and (aForm.Components[i].Tag = 10) then
+      dmPrincipal.imgList.GetBitmap(0,TBitBtn(aForm.Components[i]).Glyph);
+  end;
+end;
 
 procedure OnClickBitBtn(aForm: TForm; Sender: TObject);
 var
@@ -79,21 +106,19 @@ begin
   aPageControl.ActivePage := aPageControl.Pages[aPagina];
 end;
 
-{**************************************************************
-| Tag 25 padrão para TPanel que armazena os eventos do mouse. |
-| Tag 10 padrão para TPanel que será botão.                   |
-| Procedimento Verifica Todos os Paineis que serão tratados   |
-| como botão e atribui dinamicamente o efeito de troca de cor |
-| ao passar o mouse por ele.                                  |
-**************************************************************}
 procedure AtribuiEventosMouse(aForm: TForm);
 var
-  i, n, index: integer;
+  i, n, k, index, indexIco: integer;
 begin
   for n := 0 to Pred(aForm.ComponentCount) do
   begin
      if (aForm.Components[n].ClassName = 'TPanel') and (aForm.Components[n].Tag = 25) then
       index := n;
+  end;
+  for k := 0 to Pred(aForm.ComponentCount) do
+  begin
+    if (aForm.Components[k].ClassName = 'TImage') and (aForm.Components[k].Tag = 25) then
+      indexIco := k;
   end;
   for i := 0 to Pred(aForm.ComponentCount) do
   begin
@@ -102,8 +127,15 @@ begin
       TPanel(aForm.Components[i]).OnMouseMove  := TPanel(aForm.Components[index]).OnMouseMove;
       TPanel(aForm.Components[i]).OnMouseLeave :=  TPanel(aForm.Components[index]).OnMouseLeave;
     end;
+    if (aForm.Components[i].ClassName = 'TImage') and (aForm.Components[i].Tag = 11) then
+    begin
+      TImage(aForm.Components[i]).OnMouseMove := TImage(aForm.Components[indexIco]).OnMouseMove;
+      TImage(aForm.Components[i]).OnMouseLeave := TImage(aForm.Components[indexIco]).OnMouseLeave;
+    end;
   end;
 end;
+
+
 
 procedure GravaHorario(aDia: Integer; aDataSet: TClientDataSet; sEntrada, sAlmoco, sSaida, sRetorno: String);
 var

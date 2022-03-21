@@ -3,14 +3,15 @@ unit AlertaPonto.Alertas.Controller;
 interface
 
 uses
-  Vcl.Dialogs, System.SysUtils, System.Classes, Data.DB, Datasnap.DBClient;
+  Vcl.Dialogs, System.SysUtils, System.Classes, Data.DB, Datasnap.DBClient,Winapi.Windows, MmSystem,
+  Vcl.StdCtrls ;
 
 type
   TAlerta = Class
     Private
     class procedure PreencheDatas(aDataSet: TClientDataSet);
     Public
-    class procedure Alerta;
+    class procedure Alerta(aButton: TButton);
   End;
 
   procedure CriaCamposDataSet(aDataSet: TClientDataSet);
@@ -19,9 +20,13 @@ implementation
 
 { TAlerta }
 
-class procedure TAlerta.Alerta;
+class procedure TAlerta.Alerta(aButton: TButton);
+{ND_NODEFAULT Or SND_ASYNC Or SND_LOOP}
 begin
-  ShowMessage('Teste');
+  if aButton.Name = 'BT_INICIA' then
+    sndPlaySound(PChar(ExtractFilePath(ParamStr(0))+'\Alarm.wav'), SND_ASYNC);
+  if aButton.Name = 'BT_PAUSE' then
+    sndPlaySound(nil, 0);
 end;
 
 procedure CriaCamposDataSet(aDataSet: TClientDataSet);

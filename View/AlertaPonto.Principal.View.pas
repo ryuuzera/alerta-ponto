@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, AlertaPonto.Janelas.Controller,
   Vcl.StdCtrls, Vcl.Mask, AlertaPonto.Principal.Controller, CommCtrl,
-  Vcl.WinXPickers;
+  Vcl.WinXPickers, cefvcl, Vcl.Imaging.pngimage;
 
 type
   TfrmPrincipal = class(TForm)
@@ -148,9 +148,20 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    TabSheet1: TTabSheet;
-    Button1: TButton;
+    tsGrid: TTabSheet;
+    BT_INICIA: TButton;
     DBGrid1: TDBGrid;
+    BT_PAUSE: TButton;
+    imgGrid: TImage;
+    imgAlertas: TImage;
+    imgHome: TImage;
+    tsHome: TTabSheet;
+    Chromium: TChromium;
+    imgEvents: TImage;
+    Navbar: TShape;
+    Label8: TLabel;
+    Image1: TImage;
+    Shape8: TShape;
     procedure Panel5MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
@@ -167,10 +178,25 @@ type
     procedure pnEventsMouseLeave(Sender: TObject);
     procedure pnGravarClick(Sender: TObject);
     procedure pnEventsClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure BT_INICIAClick(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormActivate(Sender: TObject);
+    procedure imgHomeClick(Sender: TObject);
+    procedure imgAlertasClick(Sender: TObject);
+    procedure imgGridClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure imgFecharClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure imgMinimizarClick(Sender: TObject);
+    procedure imgEventsMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure imgEventsMouseLeave(Sender: TObject);
+    procedure tsCriarAlertaShow(Sender: TObject);
+    procedure tsCriarAlertaHide(Sender: TObject);
   private
+    FAfterCreate: Boolean;
     procedure EscondeTabsView;
     procedure Gravar;
   public
@@ -185,11 +211,12 @@ implementation
 
 uses AlertaPonto.Alertas.Controller, AlertaPonto.Alertas.Model,
   AlertaPonto.Mensagens.Controller, AlertaPonto.Funcs.Controller,
-  AlertaPonto.TimePicker.View;
+  AlertaPonto.TimePicker.View, AlertaPonto.Principal.Model;
 
 
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
+procedure TfrmPrincipal.BT_INICIAClick(Sender: TObject);
 begin
+  TAlerta.Alerta(TButton(Sender));
   if PageControl1.ActivePage <> tsCriarAlerta then
   begin
     PageControl1.ActivePage := tsCriarAlerta;
@@ -198,8 +225,18 @@ begin
   else
   begin
     SplitView2.Close;
-    PageControl1.ActivePage := TabSheet1;
+    PageControl1.ActivePage := tsHome;
   end;
+end;
+
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+begin
+  Chromium.Browser.Host.ZoomLevel := Chromium.Browser.Host.ZoomLevel + 0.5;
+end;
+
+procedure TfrmPrincipal.Button2Click(Sender: TObject);
+begin
+  Chromium.Browser.Host.ZoomLevel := Chromium.Browser.Host.ZoomLevel - 0.5;
 end;
 
 procedure TfrmPrincipal.DBGrid1DrawColumnCell(Sender: TObject;
@@ -208,19 +245,38 @@ begin
   if Odd(DBGrid1.DataSource.DataSet.RecNo) then
     DBGrid1.Canvas.Brush.Color := $00D0BCAE
   else
-    DBGrid1.Canvas.Brush.Color := clWhite;
+    DBGrid1.Canvas.Brush.Color := $00EAE1DB;
+
+
 
   if (gdSelected in State) then
   begin
     DBGrid1.Canvas.Brush.Color := $00C07D0E;
-    DBGrid1.Canvas.Font.Color  := ClWhite;
+    DBGrid1.Canvas.Font.Color  := $00EAE1DB;
   end;
+
+  DBGrid1.Canvas.FillRect(Rect);
+  DBGrid1.DefaultDrawDataCell(rect,Column.Field,state);
 end;
 
 procedure TfrmPrincipal.EscondeTabsView;
 begin
   EscondeTabs(PageControl1);
   EscondeTabs(PageControl2);
+end;
+
+procedure TfrmPrincipal.FormActivate(Sender: TObject);
+begin
+  if FAfterCreate then
+  begin
+
+    FAfterCreate := False;
+  end;
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := CaFree;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -262,9 +318,49 @@ begin
   EfetuaGravacao('todo Sábado?', 6, PageControl2, tsSabado, edSBEntrada, edSBAlmoco, edSBRetorno, edSBSaida, False);
 end;
 
+procedure TfrmPrincipal.imgAlertasClick(Sender: TObject);
+begin
+  NavegaMenus(PageControl1, tsCriarAlerta);
+  //SplitView2.Open;
+  ControlaNavegacao(Sender);
+end;
+
+procedure TfrmPrincipal.imgEventsMouseLeave(Sender: TObject);
+begin
+  MouseLeaveIcon(TImage(Sender));
+end;
+
+procedure TfrmPrincipal.imgEventsMouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+   MouseHoverIcon(TImage(Sender));
+end;
+
+procedure TfrmPrincipal.imgFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmPrincipal.imgGridClick(Sender: TObject);
+begin
+  NavegaMenus(PageControl1, tsGrid);
+  ControlaNavegacao(Sender);
+end;
+
+procedure TfrmPrincipal.imgHomeClick(Sender: TObject);
+begin
+  NavegaMenus(PageControl1, tsHome);
+  ControlaNavegacao(Sender);
+end;
+
 procedure TfrmPrincipal.imgMenuClick(Sender: TObject);
 begin
   ControlaSplitView(SplitView1);
+end;
+
+procedure TfrmPrincipal.imgMinimizarClick(Sender: TObject);
+begin
+  Application.Minimize;
 end;
 
 procedure TfrmPrincipal.pnSegundaClick(Sender: TObject);
@@ -275,6 +371,16 @@ end;
 procedure TfrmPrincipal.pnTodosDiasClick(Sender: TObject);
 begin
   NavegaMenus(PageControl2, tsTodos);
+end;
+
+procedure TfrmPrincipal.tsCriarAlertaHide(Sender: TObject);
+begin
+  SplitView2.Close;
+end;
+
+procedure TfrmPrincipal.tsCriarAlertaShow(Sender: TObject);
+begin
+  SplitView2.Open;
 end;
 
 procedure TfrmPrincipal.pnSabadoClick(Sender: TObject);
