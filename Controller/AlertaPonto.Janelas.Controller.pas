@@ -95,20 +95,14 @@ var
 begin
   try
     if Pos(Menu[0], aImg.Name) > 0 then
-    begin
       Img := TResourceStream.Create(HInstance, 'home_hover', RT_RCDATA);
-      aImg.Picture.LoadFromStream(Img);
-    end;
     if Pos(Menu[1], aImg.Name) > 0 then
-     begin
       Img := TResourceStream.Create(HInstance, 'alarme_hover', RT_RCDATA);
-      aImg.Picture.LoadFromStream(Img);
-    end;
     if Pos(Menu[2], aImg.Name) > 0 then
-     begin
       Img := TResourceStream.Create(HInstance, 'calendar_hover', RT_RCDATA);
-      aImg.Picture.LoadFromStream(Img);
-    end;
+
+    aImg.Picture.LoadFromStream(Img);
+
   finally
     Img.Free;
   end;
@@ -120,20 +114,14 @@ var
 begin
   try
     if Pos(Menu[0], aImg.Name) > 0 then
-    begin
       Img := TResourceStream.Create(HInstance, 'home', RT_RCDATA);
-      aImg.Picture.LoadFromStream(Img);
-    end;
     if Pos(Menu[1], aImg.Name) > 0 then
-     begin
       Img := TResourceStream.Create(HInstance, 'alarme', RT_RCDATA);
-      aImg.Picture.LoadFromStream(Img);
-    end;
     if Pos(Menu[2], aImg.Name) > 0 then
-     begin
       Img := TResourceStream.Create(HInstance, 'calendar', RT_RCDATA);
-      aImg.Picture.LoadFromStream(Img);
-    end;
+
+    aImg.Picture.LoadFromStream(Img);
+
   finally
     Img.Free;
   end;
