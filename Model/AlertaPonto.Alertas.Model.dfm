@@ -21,4 +21,9 @@ object dmAlertas: TdmAlertas
     Left = 144
     Top = 24
   end
+  object AfterCreate: TTimer
+    OnTimer = AfterCreateTimer
+    Left = 32
+    Top = 72
+  end
 end

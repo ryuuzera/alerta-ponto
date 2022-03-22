@@ -10,8 +10,10 @@ type
   TdmPrincipal = class(TDataModule)
     imgList: TImageList;
     AfterCreate: TTimer;
+    RelogioWeb: TTimer;
     procedure AfterCreateTimer(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
+    procedure RelogioWebTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,24 +32,20 @@ uses AlertaPonto.Principal.Controller;
 {$R *.dfm}
 
 procedure TdmPrincipal.AfterCreateTimer(Sender: TObject);
-var
-  CrmCreate: Boolean;
 begin
   ConfiguraIconesBt(frmPrincipal);
-  while not CrmCreate do
-  begin
-    if frmPrincipal.Chromium.Browser <> nil then
-    begin
-      frmPrincipal.Chromium.Browser.Host.ZoomLevel := frmPrincipal.Chromium.Browser.Host.ZoomLevel - 1.75;
-      CrmCreate := True;
-    end;
-  end;
   AfterCreate.Enabled := False;
 end;
 
 procedure TdmPrincipal.DataModuleCreate(Sender: TObject);
 begin
   AfterCreate.Enabled := True;
+end;
+
+procedure TdmPrincipal.RelogioWebTimer(Sender: TObject);
+begin
+  if Assigned(frmPrincipal.Chromium) then
+    frmPrincipal.Chromium.Browser.MainFrame.ExecuteJavaScript('SetClock()','about: blank', 0);
 end;
 
 end.

@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.WinXCtrls, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, AlertaPonto.Janelas.Controller,
   Vcl.StdCtrls, Vcl.Mask, AlertaPonto.Principal.Controller, CommCtrl,
-  Vcl.WinXPickers, cefvcl, Vcl.Imaging.pngimage;
+  Vcl.WinXPickers, cefvcl, Vcl.Imaging.pngimage, ceflib, Vcl.AppEvnts, ShellAPI;
 
 type
   TfrmPrincipal = class(TForm)
@@ -162,6 +162,8 @@ type
     Label8: TLabel;
     Image1: TImage;
     Shape8: TShape;
+    TrayIcon: TTrayIcon;
+    ApplicationEvents: TApplicationEvents;
     procedure Panel5MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
@@ -181,12 +183,9 @@ type
     procedure BT_INICIAClick(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure FormActivate(Sender: TObject);
     procedure imgHomeClick(Sender: TObject);
     procedure imgAlertasClick(Sender: TObject);
     procedure imgGridClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure imgFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure imgMinimizarClick(Sender: TObject);
@@ -195,10 +194,17 @@ type
     procedure imgEventsMouseLeave(Sender: TObject);
     procedure tsCriarAlertaShow(Sender: TObject);
     procedure tsCriarAlertaHide(Sender: TObject);
+    procedure ChromiumLoadEnd(Sender: TObject; const browser: ICefBrowser;
+      const frame: ICefFrame; httpStatusCode: Integer);
+    procedure ApplicationEventsMinimize(Sender: TObject);
+    procedure TrayIconClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure ChromiumAddressChange(Sender: TObject; const browser: ICefBrowser;
+      const frame: ICefFrame; const url: ustring);
   private
-    FAfterCreate: Boolean;
     procedure EscondeTabsView;
     procedure Gravar;
+    procedure GravaArquivoIni;
   public
   end;
 
@@ -213,6 +219,15 @@ uses AlertaPonto.Alertas.Controller, AlertaPonto.Alertas.Model,
   AlertaPonto.Mensagens.Controller, AlertaPonto.Funcs.Controller,
   AlertaPonto.TimePicker.View, AlertaPonto.Principal.Model;
 
+
+procedure TfrmPrincipal.ApplicationEventsMinimize(Sender: TObject);
+begin
+  Self.Hide();
+  Self.WindowState := wsMinimized;
+  TrayIcon.Visible := True;
+  TrayIcon.Animate := True;
+  TrayIcon.ShowBalloonHint;
+end;
 
 procedure TfrmPrincipal.BT_INICIAClick(Sender: TObject);
 begin
@@ -229,14 +244,22 @@ begin
   end;
 end;
 
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
+procedure TfrmPrincipal.ChromiumAddressChange(Sender: TObject;
+  const browser: ICefBrowser; const frame: ICefFrame; const url: ustring);
+const
+  ChavePix = 'https://nubank.com.br/pagar/pmtdg/QLwbx6cM2X';
 begin
-  Chromium.Browser.Host.ZoomLevel := Chromium.Browser.Host.ZoomLevel + 0.5;
+  if Pos('#Alertas', Chromium.Browser.MainFrame.Url) > 0  then
+    imgAlertasClick(Self);
+  if Pos('#Cafe', Chromium.Browser.MainFrame.Url) > 0 then
+     ShellExecute(0, nil, 'cmd.exe', PWideChar('/c start ' + ChavePix), nil, SW_HIDE)
 end;
 
-procedure TfrmPrincipal.Button2Click(Sender: TObject);
+procedure TfrmPrincipal.ChromiumLoadEnd(Sender: TObject;
+  const browser: ICefBrowser; const frame: ICefFrame; httpStatusCode: Integer);
 begin
-  Chromium.Browser.Host.ZoomLevel := Chromium.Browser.Host.ZoomLevel - 0.5;
+  if Chromium.Browser.Host.ZoomLevel <> -1.25 then
+    Chromium.Browser.Host.ZoomLevel := Chromium.Browser.Host.ZoomLevel - 1.25;
 end;
 
 procedure TfrmPrincipal.DBGrid1DrawColumnCell(Sender: TObject;
@@ -246,8 +269,6 @@ begin
     DBGrid1.Canvas.Brush.Color := $00D0BCAE
   else
     DBGrid1.Canvas.Brush.Color := $00EAE1DB;
-
-
 
   if (gdSelected in State) then
   begin
@@ -265,27 +286,44 @@ begin
   EscondeTabs(PageControl2);
 end;
 
-procedure TfrmPrincipal.FormActivate(Sender: TObject);
-begin
-  if FAfterCreate then
-  begin
-
-    FAfterCreate := False;
-  end;
-end;
-
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := CaFree;
 end;
 
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
+procedure TfrmPrincipal.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  EscondeTabsView;
-  AlteraCursorBotoes(Self);
-  AtribuiEventosMouse(Self);
-  MascaraHoraEdits(Self);
-  AtribuiEventosClick(Self);
+  CanClose := Mensagem('Deseja realmente fechar o aplicativo?', mtInformation, [mbYes, mbNo]) = mrYes;
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+var
+  Principal: TPrincipal;
+begin
+  Principal := TPrincipal.Create;
+  try
+    ExtraiWebView;
+    EscondeTabsView;
+    Chromium.Browser.MainFrame.LoadUrl(Principal.CaminhoApp+'webView\index.html');
+    AlteraCursorBotoes(Self);
+    AtribuiEventosMouse(Self);
+    MascaraHoraEdits(Self);
+    AtribuiEventosClick(Self);
+  finally
+    Principal.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.GravaArquivoIni;
+var
+  Alerta: TAlerta;
+begin
+  Alerta := TAlerta.Create;
+  try
+    Alerta.GravarConfig('Conf.INI', dmAlertas.cdsAlertas);
+  finally
+    Alerta.Free;
+  end;
 end;
 
 procedure TfrmPrincipal.Gravar;
@@ -321,7 +359,6 @@ end;
 procedure TfrmPrincipal.imgAlertasClick(Sender: TObject);
 begin
   NavegaMenus(PageControl1, tsCriarAlerta);
-  //SplitView2.Open;
   ControlaNavegacao(Sender);
 end;
 
@@ -371,6 +408,14 @@ end;
 procedure TfrmPrincipal.pnTodosDiasClick(Sender: TObject);
 begin
   NavegaMenus(PageControl2, tsTodos);
+end;
+
+procedure TfrmPrincipal.TrayIconClick(Sender: TObject);
+begin
+  TrayIcon.Visible := False;
+  Show();
+  WindowState := wsNormal;
+  Application.BringToFront();
 end;
 
 procedure TfrmPrincipal.tsCriarAlertaHide(Sender: TObject);
@@ -424,6 +469,7 @@ procedure TfrmPrincipal.pnGravarClick(Sender: TObject);
 begin
   ValidaCamposVazios(Self, PageControl2.ActivePage);
   Gravar;
+  GravaArquivoIni;
 end;
 
 procedure TfrmPrincipal.pnQuartaClick(Sender: TObject);

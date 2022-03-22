@@ -7,6 +7,17 @@ uses
   Controls, Forms,Dialogs, ComCtrls, WinXCtrls,ExtCtrls, Data.DB, Datasnap.DBClient,
   Vcl.Mask, Vcl.DBGrids, Vcl.StdCtrls;
 
+  type TPrincipal = class
+    public
+      constructor Create;
+    private
+      FCaminhoApp: String;
+      function GetCaminhoApp: String;
+    published
+      property CaminhoApp: String read GetCaminhoApp;
+
+  end;
+
   procedure EscondeTabs(aPageControl: TPageControl);
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: Integer); overload;
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: TTabSheet); overload;
@@ -27,6 +38,7 @@ uses
   procedure ControlaSplitView(aSplitView: TSplitView);
   procedure ConfiguraIconesBt(aForm: TForm);
   procedure ControlaNavegacao(Sender: TObject);
+  procedure ExtraiWebView;
 
 implementation
 
@@ -34,6 +46,55 @@ uses AlertaPonto.Principal.View, AlertaPonto.Alertas.Controller,
   AlertaPonto.Alertas.Model, AlertaPonto.Mensagens.Controller,
   AlertaPonto.Funcs.Controller, Vcl.Buttons, AlertaPonto.TimePicker.View,
   AlertaPonto.Principal.Model;
+
+procedure ExtraiWebView;
+var
+  Path, PathWeb, sArq: String;
+  FLista: TStringList;
+  Arq: TResourceStream;
+
+  procedure CriaDiretorioWeb;
+  begin
+    if not DirectoryExists(PathWeb) then
+      CreateDir(PathWeb);
+  end;
+
+  procedure ListaArquivos(Lista: TStringList);
+  begin
+    Lista.Add(PathWeb+'index.html');
+    Lista.Add(PathWeb+'scripts.js');
+    Lista.Add(PathWeb+'style.css')
+  end;
+
+  procedure ExtraiArquivos;
+  var
+    i: Integer;
+  begin
+    FLista := TStringList.Create;
+    ListaArquivos(FLista);
+    try
+      for i := 0 to Pred(FLista.Count) do
+      begin
+        try
+          if not FileExists(FLista[i]) then
+          begin
+            Arq := TResourceStream.Create(HInstance, 'rc_web'+i.ToString, RT_RCDATA);
+            Arq.SaveToFile(FLista[i]);
+          end;
+        finally
+          Arq.Free;
+        end;
+      end;
+    finally
+      FLista.Free;
+    end;
+  end;
+
+begin
+  Path := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+  CriaDiretorioWeb;
+  ExtraiArquivos;
+end;
 
 procedure ControlaNavegacao(Sender: TObject);
 begin
@@ -281,6 +342,18 @@ begin
       TBitBtn(aForm.Components[i]).OnClick := TPanel(aForm.Components[index]).OnClick;
     end;
   end;
+end;
+
+{ TPrincipal }
+
+constructor TPrincipal.Create;
+begin
+  FCaminhoApp := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+end;
+
+function TPrincipal.GetCaminhoApp: String;
+begin
+  Result := FCaminhoApp;
 end;
 
 end.
