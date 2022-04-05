@@ -29,7 +29,8 @@ type
 implementation
 
 uses
-  AlertaPonto.Alertas.Model, Vcl.Forms;
+  AlertaPonto.Alertas.Model, Vcl.Forms, Vcl.ComCtrls, Vcl.Mask,
+  AlertaPonto.Principal.View;
 
 { TAlerta }
 
@@ -168,13 +169,175 @@ var
       end;
     end;
 
+    function TodosIguais(CDS: TClientDataSet): Boolean;
+    Var
+      Dias: TArray<String>;
+    begin
+      Result := False;
+      SetLength(Dias,6);
+      CDS.First;
+      while not CDS.Eof do
+      begin
+        case CDS.FieldByName('ID').AsInteger of
+          1:
+          begin
+            Dias[0] :=
+            CDS.FieldByName('Entrada').AsString +
+            CDS.FieldByName('Almoco').AsString +
+            CDS.FieldByName('Retorno').AsString +
+            CDS.FieldByName('Saida').AsString;
+          end;
+          2:
+          begin
+            Dias[1] :=
+            CDS.FieldByName('Entrada').AsString +
+            CDS.FieldByName('Almoco').AsString +
+            CDS.FieldByName('Retorno').AsString +
+            CDS.FieldByName('Saida').AsString;
+          end;
+          3:
+          begin
+            Dias[2] :=
+            CDS.FieldByName('Entrada').AsString +
+            CDS.FieldByName('Almoco').AsString +
+            CDS.FieldByName('Retorno').AsString +
+            CDS.FieldByName('Saida').AsString;
+          end;
+          4:
+          begin
+            Dias[3] :=
+            CDS.FieldByName('Entrada').AsString +
+            CDS.FieldByName('Almoco').AsString +
+            CDS.FieldByName('Retorno').AsString +
+            CDS.FieldByName('Saida').AsString;
+          end;
+          5:
+          begin
+            Dias[4] :=
+            CDS.FieldByName('Entrada').AsString +
+            CDS.FieldByName('Almoco').AsString +
+            CDS.FieldByName('Retorno').AsString +
+            CDS.FieldByName('Saida').AsString;
+          end;
+          6:
+          begin
+            Dias[5] :=
+            CDS.FieldByName('Entrada').AsString +
+            CDS.FieldByName('Almoco').AsString +
+            CDS.FieldByName('Retorno').AsString +
+            CDS.FieldByName('Saida').AsString;
+          end;
+        end;
+        CDS.Next;
+      end;
+      if (Dias[0] = Dias[1]) and
+         (Dias[0] = Dias[2]) and
+         (Dias[0] = Dias[3]) and
+         (Dias[0] = Dias[4]) and
+         (Dias[0] = Dias[5]) then
+        Result := True;
+    end;
+
     procedure CarregaEdits(aForm: TForm);
     var
-      i: integer;
+      i, k: integer;
+      FEdit: TMaskEdit;
+    const
+      NomesED: TArray<String> = ['Entrada','Almoco','Retorno','Saida'];
     begin
       for i := 0 to Pred(aForm.ComponentCount) do
       begin
-
+        if aForm.Components[i].ClassName = 'TTabSheet' then
+        begin
+          if (TTabSheet(aForm.Components[i]).Name = TComponentName('tsTodos')) and
+          (TodosIguais(dmAlertas.cdsAlertas)) then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edTD'+NomesED[k]) as TMaskEdit;
+            case k of
+              0: FEdit.Text := Arq.ReadString('Segunda', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Segunda', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Segunda', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Segunda', NomesED[3], '');
+            end;
+          end
+          else
+          begin
+            FEdit := aForm.FindComponent('edTD'+NomesED[k]) as TMaskEdit;
+            case k of
+              0: FEdit.Text := '';
+              1: FEdit.Text := '';
+              2: FEdit.Text := '';
+              3: FEdit.Text := '';
+            end;
+          end;
+          if TTabSheet(aForm.Components[i]).Name = TComponentName('tsSegunda') then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edSG'+NomesED[k]) as TMaskEdit;
+            case k of
+              0: FEdit.Text := Arq.ReadString('Segunda', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Segunda', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Segunda', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Segunda', NomesED[3], '');
+            end;
+          end;
+          if TTabSheet(aForm.Components[i]).Name = TComponentName('tsTerca') then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edTC'+NomesED[k]) as TMaskEdit;
+            case k of
+              0: FEdit.Text := Arq.ReadString('Terca', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Terca', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Terca', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Terca', NomesED[3], '');
+            end;
+          end;
+          if TTabSheet(aForm.Components[i]).Name = TComponentName('tsQuarta') then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edQT'+NomesED[k]) as TMaskEdit;
+             case k of
+              0: FEdit.Text := Arq.ReadString('Quarta', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Quarta', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Quarta', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Quarta', NomesED[3], '');
+            end;
+          end;
+          if TTabSheet(aForm.Components[i]).Name = TComponentName('tsQuinta') then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edQN'+NomesED[k]) as TMaskEdit;
+             case k of
+              0: FEdit.Text := Arq.ReadString('Quinta', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Quinta', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Quinta', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Quinta', NomesED[3], '');
+            end;
+          end;
+          if TTabSheet(aForm.Components[i]).Name = TComponentName('tsSexta') then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edSX'+NomesED[k]) as TMaskEdit;
+             case k of
+              0: FEdit.Text := Arq.ReadString('Sexta', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Sexta', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Sexta', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Sexta', NomesED[3], '');
+            end;
+          end;
+          if TTabSheet(aForm.Components[i]).Name = TComponentName('tsSabado') then
+          for k := 0 to 3 do
+          begin
+            FEdit := aForm.FindComponent('edSB'+NomesED[k]) as TMaskEdit;
+             case k of
+              0: FEdit.Text := Arq.ReadString('Sabado', NomesED[0], '');
+              1: FEdit.Text := Arq.ReadString('Sabado', NomesED[1], '');
+              2: FEdit.Text := Arq.ReadString('Sabado', NomesED[2], '');
+              3: FEdit.Text := Arq.ReadString('Sabado', NomesED[3], '');
+            end;
+          end;
+        end;
       end;
     end;
 
@@ -183,6 +346,7 @@ begin
   try
     try
       CarregaCDS(dmAlertas.cdsAlertas);
+      CarregaEdits(frmPrincipal);
     except
       // não carrega
     end;

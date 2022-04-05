@@ -22,8 +22,8 @@ type
   procedure MouseLeaveIcon(aImg: TImage);
 
   const
-    COR_BOTAO = $00C08000;
-    COR_BOTAO_HOVER = $00AF6E00;
+    COR_BOTAO = $00C07D0E;
+    COR_BOTAO_HOVER = $00B4760E;
     Menu: TArray<String> = ['Home','Alertas','Grid'];
 
 implementation

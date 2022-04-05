@@ -15,7 +15,6 @@ uses
       function GetCaminhoApp: String;
     published
       property CaminhoApp: String read GetCaminhoApp;
-
   end;
 
   procedure EscondeTabs(aPageControl: TPageControl);
@@ -23,11 +22,11 @@ uses
   procedure NavegaMenus(aPageControl: TPageControl; aPagina: TTabSheet); overload;
   procedure AtribuiEventosMouse(aForm: TForm);
   /// <summary>
-  // Tag 25 padrão para TPanel que armazena os eventos do mouse.
-  // Tag 10 padrão para TPanel que será botão.
-  // Procedimento Verifica Todos os Paineis que serão tratados
-  // como botão e atribui dinamicamente o efeito de troca de cor
-  // ao passar o mouse por ele.
+  /// Tag 25 padrão para TPanel que armazena os eventos do mouse.
+  /// Tag 10 padrão para TPanel que será botão.
+  /// Procedimento Verifica Todos os Paineis que serão tratados
+  /// como botão e atribui dinamicamente o efeito de troca de cor
+  /// ao passar o mouse por ele.
   /// </summary>
   procedure AtribuiEventosClick(aForm: TForm);
   procedure GravaHorariosTodos(aDataSet: TClientDataSet; sEntrada, sAlmoco, sSaida, sRetorno: String);
@@ -38,7 +37,7 @@ uses
   procedure ControlaSplitView(aSplitView: TSplitView);
   procedure ConfiguraIconesBt(aForm: TForm);
   procedure ControlaNavegacao(Sender: TObject);
-  procedure ExtraiWebView;
+  procedure ExtraiRecursos;
 
 implementation
 
@@ -47,7 +46,7 @@ uses AlertaPonto.Principal.View, AlertaPonto.Alertas.Controller,
   AlertaPonto.Funcs.Controller, Vcl.Buttons, AlertaPonto.TimePicker.View,
   AlertaPonto.Principal.Model;
 
-procedure ExtraiWebView;
+procedure ExtraiRecursos;
 var
   Path, PathWeb, sArq: String;
   FLista: TStringList;
@@ -91,7 +90,7 @@ var
   end;
 
 begin
-  Path := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+  PathWeb := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0))+'webView');
   CriaDiretorioWeb;
   ExtraiArquivos;
 end;
@@ -196,8 +195,6 @@ begin
   end;
 end;
 
-
-
 procedure GravaHorario(aDia: Integer; aDataSet: TClientDataSet; sEntrada, sAlmoco, sSaida, sRetorno: String);
 var
   i: Integer;
@@ -221,6 +218,8 @@ end;
 
 
 procedure GravaHorariosTodos(aDataSet: TClientDataSet; sEntrada, sAlmoco, sSaida, sRetorno: String);
+const
+  NomesED: TArray<String> = ['Entrada','Almoco','Retorno','Saida'];
 begin
   aDataSet.Open;
   aDataSet.First;

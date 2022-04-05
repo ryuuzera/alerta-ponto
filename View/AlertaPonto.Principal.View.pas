@@ -201,12 +201,20 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure ChromiumAddressChange(Sender: TObject; const browser: ICefBrowser;
       const frame: ICefFrame; const url: ustring);
+    procedure ChromiumBeforeContextMenu(Sender: TObject;
+      const browser: ICefBrowser; const frame: ICefFrame;
+      const params: ICefContextMenuParams; const model: ICefMenuModel);
   private
     procedure EscondeTabsView;
     procedure Gravar;
     procedure GravaArquivoIni;
+    procedure WMQueryEndSession (var Msg : TWMQueryEndSession); message WM_QueryEndSession;
+    procedure WMEndSession(var Msg: TWMEndSession); message WM_ENDSESSION;
   public
   end;
+
+  function ShutdownBlockReasonCreate(hWnd: HWND; Reason: LPCWSTR): Bool; stdcall; external user32;
+  function ShutdownBlockReasonDestroy(hWnd: HWND): Bool; stdcall; external user32;
 
 var
   frmPrincipal: TfrmPrincipal;
@@ -250,9 +258,16 @@ const
   ChavePix = 'https://nubank.com.br/pagar/pmtdg/QLwbx6cM2X';
 begin
   if Pos('#Alertas', Chromium.Browser.MainFrame.Url) > 0  then
-    imgAlertasClick(Self);
+    imgAlertasClick(imgAlertas);
   if Pos('#Cafe', Chromium.Browser.MainFrame.Url) > 0 then
      ShellExecute(0, nil, 'cmd.exe', PWideChar('/c start ' + ChavePix), nil, SW_HIDE)
+end;
+
+procedure TfrmPrincipal.ChromiumBeforeContextMenu(Sender: TObject;
+  const browser: ICefBrowser; const frame: ICefFrame;
+  const params: ICefContextMenuParams; const model: ICefMenuModel);
+begin
+  model.Clear;
 end;
 
 procedure TfrmPrincipal.ChromiumLoadEnd(Sender: TObject;
@@ -302,7 +317,7 @@ var
 begin
   Principal := TPrincipal.Create;
   try
-    ExtraiWebView;
+    ExtraiRecursos;
     EscondeTabsView;
     Chromium.Browser.MainFrame.LoadUrl(Principal.CaminhoApp+'webView\index.html');
     AlteraCursorBotoes(Self);
@@ -410,6 +425,7 @@ begin
   NavegaMenus(PageControl2, tsTodos);
 end;
 
+
 procedure TfrmPrincipal.TrayIconClick(Sender: TObject);
 begin
   TrayIcon.Visible := False;
@@ -426,6 +442,18 @@ end;
 procedure TfrmPrincipal.tsCriarAlertaShow(Sender: TObject);
 begin
   SplitView2.Open;
+end;
+
+procedure TfrmPrincipal.WMEndSession(var Msg: TWMEndSession);
+begin
+  Msg.Result := 0;
+end;
+
+procedure TfrmPrincipal.WMQueryEndSession(var Msg: TWMQueryEndSession);
+begin
+  ShutdownBlockReasonDestroy(Application.MainForm.Handle);
+  ShutdownBlockReasonCreate(Application.MainForm.Handle, 'Não esqueça de bater o PONTO!!!');
+  Msg.Result := 0;
 end;
 
 procedure TfrmPrincipal.pnSabadoClick(Sender: TObject);

@@ -119,6 +119,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="..\Controller\AlertaPonto.Chromium.Helper.Controller.pas"/>
         <RcItem Include="..\assets\icons\alarme.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>alarme</ResourceId>

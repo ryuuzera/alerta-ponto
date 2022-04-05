@@ -31,8 +31,6 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     ParentDoubleBuffered = False
     TabOrder = 0
-    ExplicitWidth = 570
-    ExplicitHeight = 324
     object Panel11: TPanel
       AlignWithMargins = True
       Left = 1
@@ -51,8 +49,6 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentDoubleBuffered = False
       TabOrder = 0
-      ExplicitWidth = 568
-      ExplicitHeight = 322
       object Panel5: TPanel
         Left = 0
         Top = 0
@@ -67,7 +63,6 @@ object frmPrincipal: TfrmPrincipal
         ShowCaption = False
         TabOrder = 0
         OnMouseDown = Panel5MouseDown
-        ExplicitWidth = 568
         object imgFechar: TImage
           Tag = 10
           Left = 555
@@ -178,45 +173,37 @@ object frmPrincipal: TfrmPrincipal
         ParentDoubleBuffered = False
         ShowCaption = False
         TabOrder = 1
-        ExplicitWidth = 518
-        ExplicitHeight = 298
         object PageControl1: TPageControl
           Left = 0
           Top = 0
           Width = 529
           Height = 310
-          ActivePage = tsHome
+          ActivePage = tsCriarAlerta
           Align = alClient
           DoubleBuffered = True
           ParentDoubleBuffered = False
           Style = tsFlatButtons
           TabOrder = 0
-          ExplicitWidth = 518
-          ExplicitHeight = 298
           object tsHome: TTabSheet
             Caption = 'tsHome'
             ImageIndex = 2
-            ExplicitWidth = 510
-            ExplicitHeight = 267
             object Chromium: TChromium
               Left = 0
               Top = 0
               Width = 521
               Height = 279
               Align = alClient
+              DefaultUrl = 'about:blank'
               TabOrder = 0
               OnLoadEnd = ChromiumLoadEnd
+              OnBeforeContextMenu = ChromiumBeforeContextMenu
               OnAddressChange = ChromiumAddressChange
-              ExplicitWidth = 510
-              ExplicitHeight = 267
             end
           end
           object tsCriarAlerta: TTabSheet
             Caption = 'tsCriarAlerta'
             OnHide = tsCriarAlertaHide
             OnShow = tsCriarAlertaShow
-            ExplicitWidth = 510
-            ExplicitHeight = 267
             DesignSize = (
               521
               279)
@@ -236,8 +223,6 @@ object frmPrincipal: TfrmPrincipal
               ParentBackground = False
               ShowCaption = False
               TabOrder = 0
-              ExplicitWidth = 510
-              ExplicitHeight = 267
               object Panel3: TPanel
                 Left = 0
                 Top = 0
@@ -249,7 +234,6 @@ object frmPrincipal: TfrmPrincipal
                 Color = 14602181
                 ParentBackground = False
                 TabOrder = 0
-                ExplicitHeight = 267
                 object PageControl2: TPageControl
                   AlignWithMargins = True
                   Left = 5
@@ -260,16 +244,14 @@ object frmPrincipal: TfrmPrincipal
                   Margins.Top = 8
                   Margins.Right = 0
                   Margins.Bottom = 8
-                  ActivePage = tsTodos
+                  ActivePage = tsSegunda
                   Align = alClient
                   DoubleBuffered = True
                   ParentDoubleBuffered = False
                   Style = tsButtons
                   TabOrder = 0
-                  ExplicitHeight = 251
                   object tsTodos: TTabSheet
                     Caption = 'tsTodos'
-                    ExplicitHeight = 220
                     object pnTsTodos: TPanel
                       Left = 0
                       Top = 0
@@ -284,7 +266,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentDoubleBuffered = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -491,7 +472,6 @@ object frmPrincipal: TfrmPrincipal
                   object tsSegunda: TTabSheet
                     Caption = 'tsSegunda'
                     ImageIndex = 1
-                    ExplicitHeight = 220
                     object Panel28: TPanel
                       Left = 0
                       Top = 0
@@ -504,7 +484,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -711,7 +690,6 @@ object frmPrincipal: TfrmPrincipal
                   object tsTerca: TTabSheet
                     Caption = 'tsTerca'
                     ImageIndex = 2
-                    ExplicitHeight = 220
                     object Panel38: TPanel
                       Left = 0
                       Top = 0
@@ -724,7 +702,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -931,7 +908,6 @@ object frmPrincipal: TfrmPrincipal
                   object tsQuarta: TTabSheet
                     Caption = 'tsQuarta'
                     ImageIndex = 3
-                    ExplicitHeight = 220
                     object Panel2: TPanel
                       Left = 0
                       Top = 0
@@ -944,7 +920,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -1152,7 +1127,6 @@ object frmPrincipal: TfrmPrincipal
                   object tsQuinta: TTabSheet
                     Caption = 'tsQuinta'
                     ImageIndex = 4
-                    ExplicitHeight = 220
                     object Panel18: TPanel
                       Left = 0
                       Top = 0
@@ -1165,7 +1139,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -1372,7 +1345,6 @@ object frmPrincipal: TfrmPrincipal
                   object tsSexta: TTabSheet
                     Caption = 'tsSexta'
                     ImageIndex = 5
-                    ExplicitHeight = 220
                     object Panel33: TPanel
                       Left = 0
                       Top = 0
@@ -1385,7 +1357,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -1592,7 +1563,6 @@ object frmPrincipal: TfrmPrincipal
                   object tsSabado: TTabSheet
                     Caption = 'tsSabado'
                     ImageIndex = 6
-                    ExplicitHeight = 220
                     object Panel23: TPanel
                       Left = 0
                       Top = 0
@@ -1605,7 +1575,6 @@ object frmPrincipal: TfrmPrincipal
                       ParentBackground = False
                       ShowCaption = False
                       TabOrder = 0
-                      ExplicitHeight = 220
                       DesignSize = (
                         405
                         232)
@@ -1821,8 +1790,6 @@ object frmPrincipal: TfrmPrincipal
                 BevelOuter = bvNone
                 ShowCaption = False
                 TabOrder = 1
-                ExplicitWidth = 92
-                ExplicitHeight = 267
                 object pnGravar: TPanel
                   Tag = 10
                   AlignWithMargins = True
@@ -1837,7 +1804,7 @@ object frmPrincipal: TfrmPrincipal
                   Align = alTop
                   BevelOuter = bvNone
                   Caption = 'Gravar'
-                  Color = 12615680
+                  Color = 12614926
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWhite
                   Font.Height = -11
@@ -1847,34 +1814,31 @@ object frmPrincipal: TfrmPrincipal
                   ParentFont = False
                   TabOrder = 0
                   OnClick = pnGravarClick
-                  ExplicitWidth = 92
                 end
               end
             end
             object SplitView2: TSplitView
               Left = 0
               Top = 0
-              Width = 0
+              Width = 70
               Height = 279
               AnimationDelay = 25
               AnimationStep = 15
-              Color = 12615680
+              Color = 12614926
               DisplayMode = svmOverlay
-              Opened = False
               OpenedWidth = 70
               Placement = svpLeft
               TabOrder = 1
-              ExplicitHeight = 267
               object pnSexta: TPanel
                 Tag = 10
                 Left = 0
                 Top = 190
-                Width = 0
+                Width = 70
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'Sexta'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
                 Font.Height = -11
@@ -1889,12 +1853,12 @@ object frmPrincipal: TfrmPrincipal
                 Tag = 10
                 Left = 0
                 Top = 157
-                Width = 0
+                Width = 70
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'Quinta'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
                 Font.Height = -11
@@ -1909,12 +1873,12 @@ object frmPrincipal: TfrmPrincipal
                 Tag = 10
                 Left = 0
                 Top = 124
-                Width = 0
+                Width = 70
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'Quarta'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
                 Font.Height = -11
@@ -1929,12 +1893,12 @@ object frmPrincipal: TfrmPrincipal
                 Tag = 10
                 Left = 0
                 Top = 91
-                Width = 0
+                Width = 70
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'Ter'#231'a'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
                 Font.Height = -11
@@ -1949,12 +1913,12 @@ object frmPrincipal: TfrmPrincipal
                 Tag = 10
                 Left = 0
                 Top = 58
-                Width = 0
+                Width = 70
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'Segunda'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
                 Font.Height = -11
@@ -1970,7 +1934,7 @@ object frmPrincipal: TfrmPrincipal
                 AlignWithMargins = True
                 Left = 0
                 Top = 25
-                Width = 0
+                Width = 70
                 Height = 33
                 Margins.Left = 0
                 Margins.Top = 25
@@ -1979,7 +1943,7 @@ object frmPrincipal: TfrmPrincipal
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'Todos'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWhite
                 Font.Height = -11
@@ -1994,12 +1958,12 @@ object frmPrincipal: TfrmPrincipal
                 Tag = 10
                 Left = 0
                 Top = 223
-                Width = 0
+                Width = 70
                 Height = 33
                 Align = alTop
                 BevelOuter = bvNone
                 Caption = 'S'#225'bado'
-                Color = 12615680
+                Color = 12614926
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = 13748894
                 Font.Height = -11
@@ -2015,8 +1979,10 @@ object frmPrincipal: TfrmPrincipal
           object tsGrid: TTabSheet
             Caption = 'tsGrid'
             ImageIndex = 1
-            ExplicitWidth = 510
-            ExplicitHeight = 267
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Shape8: TShape
               Left = 186
               Top = 34
@@ -2774,7 +2740,6 @@ object frmPrincipal: TfrmPrincipal
         OpenedWidth = 50
         Placement = svpLeft
         TabOrder = 2
-        ExplicitHeight = 298
         object Panel1: TPanel
           AlignWithMargins = True
           Left = 0
@@ -2792,7 +2757,6 @@ object frmPrincipal: TfrmPrincipal
           ParentBackground = False
           ShowCaption = False
           TabOrder = 0
-          ExplicitHeight = 298
           object imgGrid: TImage
             Tag = 11
             AlignWithMargins = True

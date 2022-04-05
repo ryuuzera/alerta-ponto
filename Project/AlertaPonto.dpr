@@ -13,7 +13,9 @@ uses
   AlertaPonto.Funcs.Controller in '..\Controller\AlertaPonto.Funcs.Controller.pas',
   AlertaPonto.FormDlgPadrao.View in '..\View\Forms_Owner\AlertaPonto.FormDlgPadrao.View.pas' {frmDlgPadrao},
   AlertaPonto.TimePicker.View in '..\View\AlertaPonto.TimePicker.View.pas' {frmTimePicker},
-  AlertaPonto.Principal.Model in '..\Model\AlertaPonto.Principal.Model.pas' {dmPrincipal: TDataModule};
+  AlertaPonto.Principal.Model in '..\Model\AlertaPonto.Principal.Model.pas' {dmPrincipal: TDataModule},
+  AlertaPonto.Chromium.Helper.Controller in '..\Controller\AlertaPonto.Chromium.Helper.Controller.pas',
+  Winapi.Windows;
 
 {$R *.res}
 
